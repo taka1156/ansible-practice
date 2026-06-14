@@ -1,5 +1,4 @@
 services:
-  # Ansibleの実行環境
   ansible-bastion:
     build:
       context: .
@@ -7,24 +6,28 @@ services:
     privileged: true
     volumes:
       - ../:/workspace
+      - ../keys:/shared/ssh
     tty: true
     depends_on:
       - ansible-target
     networks:
       - lab-net
 
-  # Ansibleの被実行環境
   ansible-target:
     build:
       context: .
       dockerfile: ./ansible_target/Dockerfile
     privileged: true
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ../keys:/shared/ssh
     tty: true
     networks:
       - lab-net
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock # Docker outside of Dockerのためのボリュームマウント
 
 networks:
   lab-net:
     driver: bridge
+
+volumes:
+  ssh-keys:

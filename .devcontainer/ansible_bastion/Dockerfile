@@ -17,6 +17,7 @@ apt-get install -y --no-install-recommends \
   curl \
   make \
   locales \
+  tzdata \
   ansible \
   ansible-lint
 
