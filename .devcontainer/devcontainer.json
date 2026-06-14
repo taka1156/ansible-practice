@@ -1,0 +1,27 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vscode/main/extensions/configuration-editing/schemas/devContainer.vscode.schema.json",
+    "name": "ansible-practice",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "ansible-bastion",
+    "workspaceFolder": "/workspace",
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash",
+                "editor.formatOnSave": true,
+                "editor.tabSize": 2,
+                "editor.detectIndentation": false,
+                "ansible.validation.enabled": true,
+                "ansible.linting.enabled": true,
+                "ansible.linting.path": "ansible-lint"
+            },
+            "extensions": [
+                "MS-CEINTL.vscode-language-pack-ja",
+                "GitHub.copilot",
+                "GitHub.copilot-chat",
+                "streetsidesoftware.code-spell-checker",
+                "redhat.ansible"
+            ]
+        }
+    }
+}
